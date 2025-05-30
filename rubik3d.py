@@ -28,7 +28,6 @@ class SimpleCube:
         self.current_rotation = None
     
     def init_cube(self):
-        """Tạo 26 cubie với màu cố định"""
         self.cubies = []
         
         for x in range(-1, 2):
@@ -54,7 +53,6 @@ class SimpleCube:
         print(f"Initialized {len(self.cubies)} cubies")
     
     def get_layer_cubies(self, axis, layer):
-        """Lấy indices của cubies trong layer"""
         indices = []
         for i, cubie in enumerate(self.cubies):
             x, y, z = cubie['pos']
@@ -67,7 +65,6 @@ class SimpleCube:
         return indices
     
     def rotate_layer(self, axis, layer, clockwise=True):
-        """Bắt đầu xoay layer"""
         if self.is_animating:
             return False
         
@@ -83,7 +80,6 @@ class SimpleCube:
         return True
     
     def update_animation(self):
-        """Cập nhật animation"""
         if not self.is_animating:
             return
         
@@ -96,7 +92,6 @@ class SimpleCube:
             self.current_rotation = None
     
     def complete_rotation(self):
-        """Hoàn thành xoay - FIXED cho tất cả các mặt"""
         if not self.current_rotation:
             return
         
@@ -163,7 +158,6 @@ class SimpleCube:
         return pos
     
     def rotate_colors(self, colors, axis, clockwise):
-        """Xoay màu sắc - VỀ LOGIC ĐƠN GIẢN NHƯ U/L"""
         new_colors = {}
         
         print(f"  Rotating colors {colors} around {axis}, clockwise={clockwise}")
@@ -244,7 +238,6 @@ def draw_sticker(face):
     glEnd()
 
 def draw_cubie(cubie):
-    """Vẽ một cubie"""
     x, y, z = cubie['pos']
     colors = cubie['colors']
     
@@ -267,7 +260,6 @@ def draw_cubie(cubie):
     glPopMatrix()
 
 def draw_cube(cube):
-    """Vẽ toàn bộ cube"""
     if cube.is_animating and cube.current_rotation:
         axis = cube.current_rotation['axis']
         angle = cube.current_rotation['angle'] * cube.animation_progress
