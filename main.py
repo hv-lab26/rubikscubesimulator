@@ -147,7 +147,6 @@ class SimpleCube:
             print(f"Colors: {old_data[idx]['colors']} -> {new_colors}")
     
     def rotate_position(self, pos, axis, clockwise):
-        """Xoay vị trí"""
         x, y, z = pos
         if axis == 'x':
             return [x, -z if clockwise else z, y if clockwise else -y]
